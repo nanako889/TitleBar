@@ -6,11 +6,8 @@
         <attr name="tb_backgroupd" format="reference"/>
         <attr name="tb_title" format="string"/>
         <attr name="tb_title_color" format="color"/>
-        <attr name="tb_title_img_visible" format="boolean"/>
-        <attr name="tb_title_img_image" format="reference"/>
         <attr name="tb_title_visible" format="boolean"/>
         <attr name="tb_left_visible" format="boolean"/>
-        <attr name="tb_back_visible" format="boolean"/>
         <attr name="tb_left_text" format="string"/>
         <attr name="tb_left_text_color" format="color"/>
         <attr name="tb_left_margin" format="dimension"/>

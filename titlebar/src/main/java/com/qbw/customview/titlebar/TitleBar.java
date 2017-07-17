@@ -25,6 +25,8 @@ public class TitleBar extends FrameLayout {
 
     private Listener mListener;
 
+    private View mViewStatus;
+
     private TextView mTxtTitle;
 
     private ViewGroup mVgLeft;
@@ -55,6 +57,7 @@ public class TitleBar extends FrameLayout {
         View view = LayoutInflater.from(getContext())
                                   .inflate(R.layout.tb_view_titlebar, this, true);
 
+        mViewStatus = view.findViewById(R.id.view_status);
         mTxtTitle = (TextView) view.findViewById(R.id.txt_title);
         mVgLeft = (ViewGroup) view.findViewById(R.id.layout_left);
         mTxtLeft = (TextView) view.findViewById(R.id.txt_left);
@@ -65,6 +68,12 @@ public class TitleBar extends FrameLayout {
 
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.TitleBar);
 
+        Drawable sbg = typedArray.getDrawable(R.styleable.TitleBar_tb_status_background);
+        if (sbg != null) {
+            mViewStatus.setBackgroundDrawable(sbg);
+        }
+        mViewStatus.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_status_visible,
+                                                        false) ? View.VISIBLE : View.GONE);
         Drawable bg = typedArray.getDrawable(R.styleable.TitleBar_tb_backgroupd);
         if (bg != null) {
             view.setBackgroundDrawable(bg);
@@ -86,10 +95,6 @@ public class TitleBar extends FrameLayout {
 
         Drawable drawableLeft = typedArray.getDrawable(R.styleable.TitleBar_tb_left_image);
         mImgLeft.setImageDrawable(drawableLeft);
-
-
-        mImgLeft.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_back_visible,
-                                                     true) ? View.VISIBLE : View.GONE);
 
         int leftMargin = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_left_margin, 0);
         if (leftMargin != 0) {
