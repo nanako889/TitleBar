@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view_status"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tb_status_height"
+        tools:background="#aabb00"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tb_title_height">
+
+
+        <FrameLayout
+            android:id="@+id/layout_left"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/tb_title_height"
+            android:minWidth="@dimen/tb_title_height"
+            tools:background="#aabbcc">
+
+            <ImageView
+                android:id="@+id/img_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/tb_white_circle_selector"/>
+
+            <TextView
+                android:id="@+id/txt_left"
+                style="@style/TitleTxtStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tools:text="aaaaaa"/>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/txt_title"
+            style="@style/TitleTitleStyle"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/tb_title_height"
+            android:layout_marginLeft="@dimen/tb_title_height"
+            android:layout_marginRight="@dimen/tb_title_height"
+            android:layout_weight="1"
+            tools:background="#aaddcc"
+            tools:text="aaaabbbbaaaa"/>
+
+        <FrameLayout
+            android:id="@+id/layout_right"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/tb_title_height"
+            android:minWidth="@dimen/tb_title_height"
+            tools:background="#aabbcc">
+
+            <ImageView
+                android:id="@+id/img_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/tb_white_circle_selector"/>
+
+            <TextView
+                android:id="@+id/txt_right"
+                style="@style/TitleTxtStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tools:text="b57"/>
+        </FrameLayout>
+
+    </LinearLayout>
+</LinearLayout>

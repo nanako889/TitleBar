@@ -16,9 +16,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':titlebar')
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

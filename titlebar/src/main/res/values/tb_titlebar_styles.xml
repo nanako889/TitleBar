@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TitleTitleStyle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">middle</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TitleTxtStyle" parent="TitleTitleStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+</resources>
