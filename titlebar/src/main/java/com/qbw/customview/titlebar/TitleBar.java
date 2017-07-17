@@ -99,7 +99,7 @@ public class TitleBar extends FrameLayout {
                                                       true) ? View.VISIBLE : View.INVISIBLE);
 
         mVgLeft.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_left_visible,
-                                                    true) ? View.VISIBLE : View.GONE);
+                                                    false) ? View.VISIBLE : View.GONE);
         mTxtLeft.setText(typedArray.getString(R.styleable.TitleBar_tb_left_text));
         mTxtLeft.setTextColor(typedArray.getColor(R.styleable.TitleBar_tb_left_text_color,
                                                   defaultColor));
@@ -134,6 +134,8 @@ public class TitleBar extends FrameLayout {
         ViewGroup.LayoutParams paramsTh = mVgTitle.getLayoutParams();
         paramsTh.height = theight;
         mVgTitle.setLayoutParams(paramsTh);
+        mVgLeft.setMinimumWidth(theight);
+        mVgRight.setMinimumWidth(theight);
 
         typedArray.recycle();
     }
