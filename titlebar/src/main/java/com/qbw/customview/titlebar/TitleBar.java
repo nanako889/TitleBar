@@ -27,6 +27,8 @@ public class TitleBar extends FrameLayout {
 
     private View mViewStatus;
 
+    private ViewGroup mVgTitle;
+
     private TextView mTxtTitle;
 
     private ViewGroup mVgLeft;
@@ -58,6 +60,7 @@ public class TitleBar extends FrameLayout {
                                   .inflate(R.layout.tb_view_titlebar, this, true);
 
         mViewStatus = view.findViewById(R.id.view_status);
+        mVgTitle = (ViewGroup) view.findViewById(R.id.layout_title);
         mTxtTitle = (TextView) view.findViewById(R.id.txt_title);
         mVgLeft = (ViewGroup) view.findViewById(R.id.layout_left);
         mTxtLeft = (TextView) view.findViewById(R.id.txt_left);
@@ -74,6 +77,14 @@ public class TitleBar extends FrameLayout {
         }
         mViewStatus.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_status_visible,
                                                         false) ? View.VISIBLE : View.GONE);
+        int sheight = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_status_height, -1);
+        if (sheight == -1) {
+            sheight = (int) getContext().getResources().getDimension(R.dimen.tb_status_height);
+        }
+        ViewGroup.LayoutParams paramsSh = mViewStatus.getLayoutParams();
+        paramsSh.height = sheight;
+        mViewStatus.setLayoutParams(paramsSh);
+
         Drawable bg = typedArray.getDrawable(R.styleable.TitleBar_tb_backgroupd);
         if (bg != null) {
             view.setBackgroundDrawable(bg);
@@ -116,6 +127,13 @@ public class TitleBar extends FrameLayout {
             params.rightMargin = rightMargin;
             mVgRight.setLayoutParams(params);
         }
+        int theight = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_title_height, -1);
+        if (theight == -1) {
+            theight = (int) getContext().getResources().getDimension(R.dimen.tb_title_height);
+        }
+        ViewGroup.LayoutParams paramsTh = mVgTitle.getLayoutParams();
+        paramsTh.height = theight;
+        mVgTitle.setLayoutParams(paramsTh);
 
         typedArray.recycle();
     }

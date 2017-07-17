@@ -3,8 +3,10 @@
     <declare-styleable name="TitleBar">
         <attr name="tb_status_visible" format="boolean"/>
         <attr name="tb_status_background" format="reference"/>
+        <attr name="tb_status_height" format="dimension"/>
         <attr name="tb_backgroupd" format="reference"/>
         <attr name="tb_title" format="string"/>
+        <attr name="tb_title_height" format="dimension"/>
         <attr name="tb_title_color" format="color"/>
         <attr name="tb_title_visible" format="boolean"/>
         <attr name="tb_left_visible" format="boolean"/>
