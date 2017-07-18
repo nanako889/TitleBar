@@ -33,8 +33,8 @@ ext {
 
     libraryDescription = 'A android common titlebar.'
 
-    siteUrl = ''
-    gitUrl = ''
+    siteUrl = 'https://github.com/qbaowei/TitleBarSample'
+    gitUrl = 'https://github.com/qbaowei/TitleBarSample'
 
     libraryVersion = '1.0'
 
