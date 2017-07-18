@@ -2,6 +2,7 @@ package com.qbw.customview.titlebar;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -21,7 +22,7 @@ import android.widget.TextView;
  */
 
 
-public class TitleBar extends FrameLayout {
+public class TitleBar extends FrameLayout implements View.OnClickListener {
 
     private Listener mListener;
 
@@ -97,6 +98,10 @@ public class TitleBar extends FrameLayout {
                                                    defaultColor));
         mTxtTitle.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_title_visible,
                                                       true) ? View.VISIBLE : View.INVISIBLE);
+        boolean isBold = typedArray.getBoolean(R.styleable.TitleBar_tb_title_bold, true);
+        if (isBold) {
+            mTxtTitle.setTypeface(null, Typeface.BOLD);
+        }
 
         mVgLeft.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_left_visible,
                                                     true) ? View.VISIBLE : View.GONE);
@@ -137,34 +142,48 @@ public class TitleBar extends FrameLayout {
         mVgLeft.setMinimumWidth(theight);
         mVgRight.setMinimumWidth(theight);
 
+        if ((leftMargin != 0 || rightMargin != 0) && leftMargin != rightMargin) {
+            LinearLayout.LayoutParams paramsT = (LinearLayout.LayoutParams) mTxtTitle.getLayoutParams();
+            if (leftMargin > rightMargin) {
+                paramsT.rightMargin = leftMargin - rightMargin;
+            } else {
+                paramsT.leftMargin = rightMargin - leftMargin;
+            }
+            mTxtTitle.setLayoutParams(paramsT);
+        }
+
+        mVgLeft.setOnClickListener(this);
+        mVgRight.setOnClickListener(this);
+        mTxtTitle.setOnClickListener(this);
+
         typedArray.recycle();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (mListener == null) {
+            return;
+        }
+        long vid = v.getId();
+        if (vid == R.id.layout_left) {
+            mListener.onLeftAreaClick();
+        } else if (vid == R.id.layout_right) {
+            mListener.onRightAreaClick();
+        } else if (vid == R.id.txt_title) {
+            mListener.onCenterAreaClick();
+        }
     }
 
     public interface Listener {
         void onLeftAreaClick();
 
         void onRightAreaClick();
+
+        void onCenterAreaClick();
     }
 
     public void setListener(Listener listener) {
         mListener = listener;
-        if (mListener != null) {
-            mVgLeft.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mListener.onLeftAreaClick();
-                }
-            });
-            mVgRight.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mListener.onRightAreaClick();
-                }
-            });
-        } else {
-            mVgLeft.setOnClickListener(null);
-            mVgRight.setOnClickListener(null);
-        }
     }
 
 }

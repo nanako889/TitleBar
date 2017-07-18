@@ -8,7 +8,7 @@
     tools:context="com.sample.qinbaowei.titlebarsample.MainActivity">
 
     <com.qbw.customview.titlebar.TitleBar
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:tb_title_height="48dp"
@@ -16,6 +16,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tb_backgroupd="@color/colorPrimary"
         app:tb_title="测试"
+        app:tb_left_text="坐边"
+        app:tb_right_margin="30dp"
+        app:tb_left_margin="15dp"
+        app:tb_right_text="右边"
         app:tb_title_color="@android:color/white"/>
 
 </android.support.constraint.ConstraintLayout>
