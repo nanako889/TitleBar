@@ -13,15 +13,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
-/**
- * @author qinbaowei
- * @createtime 2017/04/14 11:47
- * @email qbaowei@qq.com
- * @description
- */
-
-
 public class TitleBar extends FrameLayout implements View.OnClickListener {
 
     private Listener mListener;
