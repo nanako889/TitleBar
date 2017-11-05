@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -87,6 +88,8 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mTxtTitle.setText(typedArray.getString(R.styleable.TitleBar_tb_title));
         mTxtTitle.setTextColor(typedArray.getColor(R.styleable.TitleBar_tb_title_color,
                                                    defaultColor));
+        mTxtTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                              typedArray.getDimension(R.styleable.TitleBar_tb_title_textsize, 23));
         mTxtTitle.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_title_visible,
                                                       true) ? View.VISIBLE : View.INVISIBLE);
         boolean isBold = typedArray.getBoolean(R.styleable.TitleBar_tb_title_bold, true);

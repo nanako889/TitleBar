@@ -14,6 +14,7 @@
         app:tb_title_height="48dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:tb_title_textsize="20sp"
         app:tb_backgroupd="@color/colorPrimary"
         app:tb_title="测试"
         app:tb_left_text="坐边"
