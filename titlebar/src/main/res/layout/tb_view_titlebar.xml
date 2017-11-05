@@ -13,15 +13,30 @@
         android:layout_height="@dimen/tb_status_height"
         tools:background="#aabb00"/>
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/layout_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tb_title_height">
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/tb_title_height"
+            android:paddingRight="@dimen/tb_title_height"
+            android:textSize="18sp"
+            tools:background="#aaddcc"
+            tools:text="aaaabbbbaaaa"/>
 
         <FrameLayout
             android:id="@+id/layout_left"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:minWidth="@dimen/tb_title_height"
             tools:background="#aabbcc">
 
             <ImageView
@@ -42,22 +57,12 @@
                 tools:text="aaaaaa"/>
         </FrameLayout>
 
-        <TextView
-            android:id="@+id/txt_title"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:maxLines="1"
-            android:textSize="18sp"
-            tools:background="#aaddcc"
-            tools:text="aaaabbbbaaaa"/>
-
         <FrameLayout
             android:id="@+id/layout_right"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:minWidth="@dimen/tb_title_height"
             tools:background="#aabbcc">
 
             <ImageView
@@ -78,5 +83,5 @@
                 tools:text="b57"/>
         </FrameLayout>
 
-    </LinearLayout>
+    </FrameLayout>
 </LinearLayout>

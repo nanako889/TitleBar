@@ -3,4 +3,4 @@ TitleBar
 
 # Gradle
 
-compile 'com.qbw.customview:titlebar:1.1'
+compile 'com.qbw.customview:titlebar:1.2'

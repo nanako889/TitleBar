@@ -89,7 +89,7 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mTxtTitle.setTextColor(typedArray.getColor(R.styleable.TitleBar_tb_title_color,
                                                    defaultColor));
         mTxtTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                              typedArray.getDimension(R.styleable.TitleBar_tb_title_textsize, 23));
+                              typedArray.getDimension(R.styleable.TitleBar_tb_title_textsize, 55));
         mTxtTitle.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_title_visible,
                                                       true) ? View.VISIBLE : View.INVISIBLE);
         boolean isBold = typedArray.getBoolean(R.styleable.TitleBar_tb_title_bold, true);
@@ -98,7 +98,7 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         }
 
         mVgLeft.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_left_visible,
-                                                    true) ? View.VISIBLE : View.GONE);
+                                                    false) ? View.VISIBLE : View.GONE);
         mTxtLeft.setText(typedArray.getString(R.styleable.TitleBar_tb_left_text));
         mTxtLeft.setTextColor(typedArray.getColor(R.styleable.TitleBar_tb_left_text_color,
                                                   defaultColor));
@@ -108,13 +108,13 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
 
         int leftMargin = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_left_margin, 0);
         if (leftMargin != 0) {
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mVgLeft.getLayoutParams();
+            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mVgLeft.getLayoutParams();
             params.leftMargin = leftMargin;
             mVgLeft.setLayoutParams(params);
         }
 
         mVgRight.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_right_visible,
-                                                     true) ? View.VISIBLE : View.GONE);
+                                                     false) ? View.VISIBLE : View.GONE);
         mTxtRight.setText(typedArray.getString(R.styleable.TitleBar_tb_right_text));
         mTxtRight.setTextColor(typedArray.getColor(R.styleable.TitleBar_tb_right_text_color,
                                                    defaultColor));
@@ -122,7 +122,7 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
 
         int rightMargin = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_right_margin, 0);
         if (rightMargin != 0) {
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mVgRight.getLayoutParams();
+            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mVgRight.getLayoutParams();
             params.rightMargin = rightMargin;
             mVgRight.setLayoutParams(params);
         }
@@ -136,18 +136,12 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mVgLeft.setMinimumWidth(theight);
         mVgRight.setMinimumWidth(theight);
 
-        if ((leftMargin != 0 || rightMargin != 0) && leftMargin != rightMargin) {
-            LinearLayout.LayoutParams paramsT = (LinearLayout.LayoutParams) mTxtTitle.getLayoutParams();
-            if (leftMargin > rightMargin) {
-                paramsT.rightMargin = leftMargin - rightMargin;
-            } else {
-                paramsT.leftMargin = rightMargin - leftMargin;
-            }
-            mTxtTitle.setLayoutParams(paramsT);
-        }
-
         mVgLeft.setOnClickListener(this);
+        mTxtLeft.setOnClickListener(this);
+        mImgLeft.setOnClickListener(this);
         mVgRight.setOnClickListener(this);
+        mTxtRight.setOnClickListener(this);
+        mImgRight.setOnClickListener(this);
         mTxtTitle.setOnClickListener(this);
 
         typedArray.recycle();
@@ -159,9 +153,9 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
             return;
         }
         long vid = v.getId();
-        if (vid == R.id.layout_left) {
+        if (vid == R.id.layout_left || vid == R.id.txt_left || vid == R.id.img_left) {
             mListener.onLeftAreaClick();
-        } else if (vid == R.id.layout_right) {
+        } else if (vid == R.id.layout_right || vid == R.id.txt_right || vid == R.id.img_right) {
             mListener.onRightAreaClick();
         } else if (vid == R.id.txt_title) {
             mListener.onCenterAreaClick();
