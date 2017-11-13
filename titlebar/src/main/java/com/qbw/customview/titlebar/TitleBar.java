@@ -174,4 +174,11 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mListener = listener;
     }
 
+    public void setRightVisible(boolean b) {
+        mVgRight.setVisibility(b ? View.VISIBLE : View.GONE);
+    }
+
+    public void setLeftVisible(boolean b) {
+        mVgLeft.setVisibility(b ? View.VISIBLE : View.GONE);
+    }
 }
