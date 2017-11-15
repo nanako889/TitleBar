@@ -181,4 +181,12 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
     public void setLeftVisible(boolean b) {
         mVgLeft.setVisibility(b ? View.VISIBLE : View.GONE);
     }
+
+    public void setTitle(String title) {
+        mTxtTitle.setText(title);
+    }
+
+    public void setTitle(int resTitle) {
+        mTxtTitle.setText(resTitle);
+    }
 }
