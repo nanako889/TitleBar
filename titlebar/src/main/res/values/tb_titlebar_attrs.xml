@@ -14,6 +14,7 @@
         <attr name="tb_left_visible" format="boolean"/>
         <attr name="tb_left_text" format="string"/>
         <attr name="tb_left_text_color" format="color"/>
+        <attr name="tb_left_image_visible" format="boolean"/>
         <attr name="tb_left_margin" format="dimension"/>
         <attr name="tb_left_image" format="reference"/>
         <attr name="tb_right_visible" format="boolean"/>
