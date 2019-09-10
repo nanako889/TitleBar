@@ -24,5 +24,7 @@
         <attr name="tb_right_margin" format="dimension" />
         <attr name="tb_sub_title_size" format="dimension" />
         <attr name="tb_sub_title_color" format="color" />
+        <attr name="tb_bottom_line_show" format="boolean"/>
+        <attr name="tb_bottom_line_color" format="color"/>
     </declare-styleable>
 </resources>

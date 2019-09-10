@@ -129,7 +129,11 @@
     </FrameLayout>
 
     <View
+        android:id="@+id/v_bottom_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#888C95" />
+        android:visibility="gone"
+        tools:visibility="visible"
+        tools:background="#aa0000"
+        />
 </LinearLayout>

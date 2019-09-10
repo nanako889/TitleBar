@@ -23,6 +23,8 @@
         app:tb_right_margin="30dp"
         app:tb_left_margin="15dp"
         app:tb_right_text="右边"
+        app:tb_bottom_line_show="true"
+        app:tb_bottom_line_color="#aa0000"
         app:tb_title_color="@android:color/white"/>
 
 </android.support.constraint.ConstraintLayout>

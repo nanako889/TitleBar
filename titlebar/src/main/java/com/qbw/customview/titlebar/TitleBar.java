@@ -35,6 +35,8 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
     private TextView mTxtRight;
     private ImageView mImgRight;
 
+    private View mVBottomLine;
+
     public TitleBar(Context context) {
         super(context);
         init(null);
@@ -66,6 +68,7 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mImgRight = (ImageView) view.findViewById(R.id.img_right);
         mTvSubTitle = (TextView) view.findViewById(R.id.tv_sub_title);
         mVgSubTitleLayout = (ViewGroup) view.findViewById(R.id.layout_sub_title);
+        mVBottomLine = view.findViewById(R.id.v_bottom_line);
 
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.TitleBar);
 
@@ -75,14 +78,16 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         }
         mViewStatus.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_status_visible,
                                                         false) ? View.VISIBLE : View.GONE);
-        int sheight = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_status_height, -1);
-        if (sheight == -1) {
-            sheight = (int) getContext().getResources().getDimension(R.dimen.tb_status_height);
+        if (!adjustStatusHeight()) {
+            int sheight = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_status_height,
+                                                           -1);
+            if (sheight == -1) {
+                sheight = (int) getContext().getResources().getDimension(R.dimen.tb_status_height);
+            }
+            ViewGroup.LayoutParams paramsSh = mViewStatus.getLayoutParams();
+            paramsSh.height = sheight;
+            mViewStatus.setLayoutParams(paramsSh);
         }
-        ViewGroup.LayoutParams paramsSh = mViewStatus.getLayoutParams();
-        paramsSh.height = sheight;
-        mViewStatus.setLayoutParams(paramsSh);
-        adjustStatusHeight();
 
         Drawable bg = typedArray.getDrawable(R.styleable.TitleBar_tb_backgroupd);
         if (bg != null) {
@@ -150,6 +155,11 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mVgLeft.setMinimumWidth(theight);
         mVgRight.setMinimumWidth(theight);
 
+        boolean showBottomLine = typedArray.getBoolean(R.styleable.TitleBar_tb_bottom_line_show, false);
+        mVBottomLine.setVisibility(showBottomLine ? VISIBLE : GONE);
+        int bottomLineColor = typedArray.getColor(R.styleable.TitleBar_tb_bottom_line_color, 0);
+        mVBottomLine.setBackgroundColor(bottomLineColor);
+
         mVgLeft.setOnClickListener(this);
         mTxtLeft.setOnClickListener(this);
         mImgLeft.setOnClickListener(this);
@@ -212,13 +222,15 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mTvSubTitle.setText(subTitle);
     }
 
-    public void adjustStatusHeight() {
+    public boolean adjustStatusHeight() {
         int height = getStatusHeight(getContext());
         if (height != -1) {
             ViewGroup.LayoutParams paramsSh = mViewStatus.getLayoutParams();
             paramsSh.height = height;
             mViewStatus.setLayoutParams(paramsSh);
+            return true;
         }
+        return false;
     }
 
     public static int getStatusHeight(Context context) {
