@@ -21,31 +21,3 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
-
-
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'titlebar'
-
-    publishedGroupId = 'com.qbw.customview'
-    libraryName = 'titlebar'
-    artifact = 'titlebar'
-
-    libraryDescription = 'A android common titlebar.'
-
-    siteUrl = 'https://github.com/qbaowei/TitleBarSample'
-    gitUrl = 'https://github.com/qbaowei/TitleBarSample'
-
-    libraryVersion = '1.5'
-
-    developerId = 'qinbaowei'
-    developerName = 'qinbaowei'
-    developerEmail = 'qbaowei@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-
-    apply from: 'bintray_install.gradle'
-    apply from: 'bintray_upload.gradle'
-}
