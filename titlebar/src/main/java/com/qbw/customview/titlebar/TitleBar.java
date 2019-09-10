@@ -2,6 +2,7 @@ package com.qbw.customview.titlebar;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -23,6 +24,8 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
     private ViewGroup mVgTitle;
 
     private TextView mTxtTitle;
+    private TextView mTvSubTitle;
+    private ViewGroup mVgSubTitleLayout;
 
     private ViewGroup mVgLeft;
     private TextView mTxtLeft;
@@ -61,6 +64,8 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mVgRight = (ViewGroup) view.findViewById(R.id.layout_right);
         mTxtRight = (TextView) view.findViewById(R.id.txt_right);
         mImgRight = (ImageView) view.findViewById(R.id.img_right);
+        mTvSubTitle = (TextView) view.findViewById(R.id.tv_sub_title);
+        mVgSubTitleLayout = (ViewGroup) view.findViewById(R.id.layout_sub_title);
 
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.TitleBar);
 
@@ -77,6 +82,7 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         ViewGroup.LayoutParams paramsSh = mViewStatus.getLayoutParams();
         paramsSh.height = sheight;
         mViewStatus.setLayoutParams(paramsSh);
+        adjustStatusHeight();
 
         Drawable bg = typedArray.getDrawable(R.styleable.TitleBar_tb_backgroupd);
         if (bg != null) {
@@ -97,6 +103,12 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
             mTxtTitle.setTypeface(null, Typeface.BOLD);
         }
 
+        int defaultSubTitleColor = Color.parseColor("#999999");
+        mTvSubTitle.setTextColor(typedArray.getColor(R.styleable.TitleBar_tb_sub_title_color,
+                                                     defaultSubTitleColor));
+        mTvSubTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                                typedArray.getDimension(R.styleable.TitleBar_tb_sub_title_size,
+                                                        22));
         mVgLeft.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_left_visible,
                                                     false) ? View.VISIBLE : View.GONE);
         mTxtLeft.setText(typedArray.getString(R.styleable.TitleBar_tb_left_text));
@@ -184,6 +196,10 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mVgLeft.setVisibility(b ? View.VISIBLE : View.GONE);
     }
 
+    public void setRightTextColor(int color) {
+        mTxtRight.setTextColor(color);
+    }
+
     public void setTitle(String title) {
         mTxtTitle.setText(title);
     }
@@ -191,4 +207,38 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
     public void setTitle(int resTitle) {
         mTxtTitle.setText(resTitle);
     }
+
+    public void setSubTitle(String subTitle) {
+        mTvSubTitle.setText(subTitle);
+    }
+
+    public void adjustStatusHeight() {
+        int height = getStatusHeight(getContext());
+        if (height != -1) {
+            ViewGroup.LayoutParams paramsSh = mViewStatus.getLayoutParams();
+            paramsSh.height = height;
+            mViewStatus.setLayoutParams(paramsSh);
+        }
+    }
+
+    public static int getStatusHeight(Context context) {
+        int statusHeight = -1;
+        try {
+            Class<?> clazz = Class.forName("com.android.internal.R$dimen");
+            Object object = clazz.newInstance();
+            int height = Integer.parseInt(clazz.getField("status_bar_height")
+                                               .get(object)
+                                               .toString());
+            statusHeight = context.getResources().getDimensionPixelSize(height);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return statusHeight;
+    }
+
+    public void setShowSubTitle(boolean showSubLayout) {
+        mVgSubTitleLayout.setVisibility(showSubLayout ? VISIBLE : GONE);
+    }
+
+
 }

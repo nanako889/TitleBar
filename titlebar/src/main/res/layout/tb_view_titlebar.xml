@@ -1,35 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
 
     <View
         android:id="@+id/view_status"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tb_status_height"
-        tools:background="#aabb00"/>
+        tools:background="#aabb00" />
 
     <FrameLayout
         android:id="@+id/layout_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tb_title_height">
 
-        <TextView
-            android:id="@+id/txt_title"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:maxLines="1"
-            android:paddingLeft="@dimen/tb_title_height"
-            android:paddingRight="@dimen/tb_title_height"
-            android:textSize="18sp"
-            tools:background="#aaddcc"
-            tools:text="aaaabbbbaaaa"/>
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="48dp"
+            android:paddingRight="48dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:orientation="horizontal"
+                tools:background="#aaddcc">
+
+                <TextView
+                    android:id="@+id/txt_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:textSize="18sp"
+                    tools:text="aaaabbbbaaaa" />
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@drawable/red_circle_bg"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_sub_title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:visibility="gone"
+                tools:visibility="visible"
+                tools:background="#ddcc">
+
+                <TextView
+                    android:id="@+id/tv_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    tools:text="bbbbbbbb"
+                    tools:textSize="11dp" />
+
+            </LinearLayout>
+        </LinearLayout>
 
         <FrameLayout
             android:id="@+id/layout_left"
@@ -44,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/tb_white_circle_selector"/>
+                android:background="@drawable/tb_white_circle_selector" />
 
             <TextView
                 android:id="@+id/txt_left"
@@ -54,7 +97,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textSize="15sp"
-                tools:text="aaaaaa"/>
+                tools:text="aaaaaa" />
         </FrameLayout>
 
         <FrameLayout
@@ -70,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/tb_white_circle_selector"/>
+                android:background="@drawable/tb_white_circle_selector" />
 
             <TextView
                 android:id="@+id/txt_right"
@@ -80,8 +123,13 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textSize="15sp"
-                tools:text="b57"/>
+                tools:text="b57" />
         </FrameLayout>
 
     </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#888C95" />
 </LinearLayout>
