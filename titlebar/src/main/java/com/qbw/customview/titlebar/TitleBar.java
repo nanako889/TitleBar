@@ -107,7 +107,9 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         if (isBold) {
             mTxtTitle.setTypeface(null, Typeface.BOLD);
         }
-
+        mVgSubTitleLayout.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_sub_title_visible
+                , false) ? VISIBLE : GONE);
+        mTvSubTitle.setText(typedArray.getString(R.styleable.TitleBar_tb_sub_title));
         int defaultSubTitleColor = Color.parseColor("#999999");
         mTvSubTitle.setTextColor(typedArray.getColor(R.styleable.TitleBar_tb_sub_title_color,
                                                      defaultSubTitleColor));
@@ -155,7 +157,7 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mVgLeft.setMinimumWidth(theight);
         mVgRight.setMinimumWidth(theight);
 
-        boolean showBottomLine = typedArray.getBoolean(R.styleable.TitleBar_tb_bottom_line_show, false);
+        boolean showBottomLine = typedArray.getBoolean(R.styleable.TitleBar_tb_bottom_line_visible, false);
         mVBottomLine.setVisibility(showBottomLine ? VISIBLE : GONE);
         int bottomLineColor = typedArray.getColor(R.styleable.TitleBar_tb_bottom_line_color, 0);
         mVBottomLine.setBackgroundColor(bottomLineColor);
@@ -222,6 +224,14 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mTvSubTitle.setText(subTitle);
     }
 
+    public void setSubTitle(int subTitle) {
+        mTvSubTitle.setText(subTitle);
+    }
+
+    public void setSubTitleVisible(boolean b) {
+        mVgSubTitleLayout.setVisibility(b ? VISIBLE : GONE);
+    }
+
     public boolean adjustStatusHeight() {
         int height = getStatusHeight(getContext());
         if (height != -1) {
@@ -247,10 +257,4 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         }
         return statusHeight;
     }
-
-    public void setShowSubTitle(boolean showSubLayout) {
-        mVgSubTitleLayout.setVisibility(showSubLayout ? VISIBLE : GONE);
-    }
-
-
 }
