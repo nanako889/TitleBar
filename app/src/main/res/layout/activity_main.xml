@@ -22,6 +22,8 @@
         app:tb_left_text="坐边"
         app:tb_right_margin="30dp"
         app:tb_left_margin="15dp"
+        app:tb_title_height_weight="3"
+        app:tb_sub_title_height_weight="2"
         app:tb_right_text="右边"
         app:tb_sub_title_visible="true"
         app:tb_sub_title="子标题"
