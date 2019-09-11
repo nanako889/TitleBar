@@ -8,4 +8,7 @@ allprojects {
         maven { url "https://jitpack.io" }
     }
 }
-compile 'com.qbw.customview:titlebar:v1.5'
+
+dependencies {
+    implementation 'com.github.qbaowei:TitleBar:Tag'
+}
