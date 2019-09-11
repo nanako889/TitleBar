@@ -10,5 +10,5 @@ allprojects {
 }
 
 dependencies {
-    implementation 'com.github.qbaowei:TitleBar:Tag'
+    implementation 'com.github.qbaowei:TitleBar:v1.5'
 }
