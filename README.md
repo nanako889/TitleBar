@@ -1,6 +1,11 @@
-# TitleBarSample
+# TitleBar
 TitleBar
 
 # Gradle
 
-compile 'com.qbw.customview:titlebar:1.4'
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+compile 'com.qbw.customview:titlebar:v1.5'
