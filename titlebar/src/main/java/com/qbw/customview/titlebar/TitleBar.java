@@ -158,14 +158,14 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mVgTitle.setLayoutParams(paramsTh);
         mVgLeft.setMinimumWidth(theight);
         mVgRight.setMinimumWidth(theight);
-        int titleHeightWeight = typedArray.getInt(R.styleable.TitleBar_tb_title_height_weight, 1);
-        int subTitleHeightWeight =
-                typedArray.getInt(R.styleable.TitleBar_tb_sub_title_height_weight, 1);
+        int titleMarginTop = typedArray.getInt(R.styleable.TitleBar_tb_title_margin_top, 1);
+        int subTitleMarginTop =
+                typedArray.getInt(R.styleable.TitleBar_tb_sub_title_margin_top, 1);
         LinearLayout.LayoutParams titleParams =
                 (LinearLayout.LayoutParams) mVgTitleLayout.getLayoutParams();
-        titleParams.weight = titleHeightWeight;
+        titleParams.topMargin = titleMarginTop;
         titleParams = (LinearLayout.LayoutParams) mVgSubTitleLayout.getLayoutParams();
-        titleParams.weight = subTitleHeightWeight;
+        titleParams.topMargin = subTitleMarginTop;
 
         boolean showBottomLine = typedArray.getBoolean(R.styleable.TitleBar_tb_bottom_line_visible, false);
         mVBottomLine.setVisibility(showBottomLine ? VISIBLE : GONE);
