@@ -23,6 +23,7 @@
         app:tb_right_margin="30dp"
         app:tb_left_margin="15dp"
         app:tb_title_textsize="15sp"
+        app:tb_title_margin_top="10dp"
         app:tb_right_text="右边"
         app:tb_sub_title_visible="true"
         app:tb_sub_title="子标题"

@@ -11,7 +11,7 @@
         <attr name="tb_title_visible" format="boolean" />
         <attr name="tb_title_bold" format="boolean" />
         <attr name="tb_title_textsize" format="dimension" />
-        <attr name="tb_title_margin_top" format="integer"/>
+        <attr name="tb_title_margin_top" format="dimension"/>
         <attr name="tb_left_visible" format="boolean" />
         <attr name="tb_left_text" format="string" />
         <attr name="tb_left_text_color" format="color" />
@@ -27,7 +27,7 @@
         <attr name="tb_sub_title_color" format="color" />
         <attr name="tb_sub_title" format="string"/>
         <attr name="tb_sub_title_visible" format="boolean"/>
-        <attr name="tb_sub_title_margin_top" format="integer"/>
+        <attr name="tb_sub_title_margin_top" format="dimension"/>
         <attr name="tb_bottom_line_visible" format="boolean"/>
         <attr name="tb_bottom_line_color" format="color"/>
     </declare-styleable>
