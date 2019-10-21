@@ -15,6 +15,8 @@
         <attr name="tb_left_visible" format="boolean" />
         <attr name="tb_left_text" format="string" />
         <attr name="tb_left_text_color" format="color" />
+        <attr name="tb_left_text_size" format="dimension" />
+        <attr name="tb_left_text_margin_left" format="dimension"/>
         <attr name="tb_left_image_visible" format="boolean" />
         <attr name="tb_left_margin" format="dimension" />
         <attr name="tb_left_image" format="reference" />
@@ -22,6 +24,7 @@
         <attr name="tb_right_image" format="reference" />
         <attr name="tb_right_text" format="string" />
         <attr name="tb_right_text_color" format="color" />
+        <attr name="tb_right_text_size" format="dimension" />
         <attr name="tb_right_margin" format="dimension" />
         <attr name="tb_sub_title_size" format="dimension" />
         <attr name="tb_sub_title_color" format="color" />

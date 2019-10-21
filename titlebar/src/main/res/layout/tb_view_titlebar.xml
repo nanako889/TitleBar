@@ -73,7 +73,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/layout_left"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -97,7 +97,7 @@
                 android:maxLines="1"
                 android:textSize="15sp"
                 tools:text="aaaaaa" />
-        </FrameLayout>
+        </LinearLayout>
 
         <FrameLayout
             android:id="@+id/layout_right"

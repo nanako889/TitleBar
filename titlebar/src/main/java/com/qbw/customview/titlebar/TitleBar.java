@@ -109,8 +109,8 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         if (isBold) {
             mTxtTitle.setTypeface(null, Typeface.BOLD);
         }
-        mVgSubTitleLayout.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_sub_title_visible
-                , false) ? VISIBLE : GONE);
+        mVgSubTitleLayout.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_sub_title_visible,
+                                                              false) ? VISIBLE : GONE);
         mTvSubTitle.setText(typedArray.getString(R.styleable.TitleBar_tb_sub_title));
         int defaultSubTitleColor = Color.parseColor("#999999");
         mTvSubTitle.setTextColor(typedArray.getColor(R.styleable.TitleBar_tb_sub_title_color,
@@ -123,6 +123,12 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mTxtLeft.setText(typedArray.getString(R.styleable.TitleBar_tb_left_text));
         mTxtLeft.setTextColor(typedArray.getColor(R.styleable.TitleBar_tb_left_text_color,
                                                   defaultColor));
+        mTxtLeft.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                             typedArray.getDimension(R.styleable.TitleBar_tb_left_text_size, 22));
+        LinearLayout.LayoutParams tvLeftParams = (LinearLayout.LayoutParams) mTxtLeft.getLayoutParams();
+        tvLeftParams.leftMargin = (int) typedArray.getDimension(R.styleable.TitleBar_tb_left_text_margin_left,
+                                                                0);
+        mTxtLeft.setLayoutParams(tvLeftParams);
 
         Drawable drawableLeft = typedArray.getDrawable(R.styleable.TitleBar_tb_left_image);
         mImgLeft.setImageDrawable(drawableLeft);
@@ -141,6 +147,8 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mTxtRight.setText(typedArray.getString(R.styleable.TitleBar_tb_right_text));
         mTxtRight.setTextColor(typedArray.getColor(R.styleable.TitleBar_tb_right_text_color,
                                                    defaultColor));
+        mTxtRight.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                              typedArray.getDimension(R.styleable.TitleBar_tb_right_text_size, 22));
         mImgRight.setImageDrawable(typedArray.getDrawable(R.styleable.TitleBar_tb_right_image));
 
         int rightMargin = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_right_margin, 0);
@@ -158,16 +166,17 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mVgTitle.setLayoutParams(paramsTh);
         mVgLeft.setMinimumWidth(theight);
         mVgRight.setMinimumWidth(theight);
-        int titleMarginTop = (int) typedArray.getDimension(R.styleable.TitleBar_tb_title_margin_top, 1);
-        int subTitleMarginTop =
-                (int) typedArray.getDimension(R.styleable.TitleBar_tb_sub_title_margin_top, 1);
-        LinearLayout.LayoutParams titleParams =
-                (LinearLayout.LayoutParams) mVgTitleLayout.getLayoutParams();
+        int titleMarginTop = (int) typedArray.getDimension(R.styleable.TitleBar_tb_title_margin_top,
+                                                           1);
+        int subTitleMarginTop = (int) typedArray.getDimension(R.styleable.TitleBar_tb_sub_title_margin_top,
+                                                              1);
+        LinearLayout.LayoutParams titleParams = (LinearLayout.LayoutParams) mVgTitleLayout.getLayoutParams();
         titleParams.topMargin = titleMarginTop;
         titleParams = (LinearLayout.LayoutParams) mVgSubTitleLayout.getLayoutParams();
         titleParams.topMargin = subTitleMarginTop;
 
-        boolean showBottomLine = typedArray.getBoolean(R.styleable.TitleBar_tb_bottom_line_visible, false);
+        boolean showBottomLine = typedArray.getBoolean(R.styleable.TitleBar_tb_bottom_line_visible,
+                                                       false);
         mVBottomLine.setVisibility(showBottomLine ? VISIBLE : GONE);
         int bottomLineColor = typedArray.getColor(R.styleable.TitleBar_tb_bottom_line_color, 0);
         mVBottomLine.setBackgroundColor(bottomLineColor);
