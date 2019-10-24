@@ -125,6 +125,9 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
                                                   defaultColor));
         mTxtLeft.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                              typedArray.getDimension(R.styleable.TitleBar_tb_left_text_size, 22));
+        if (typedArray.getBoolean(R.styleable.TitleBar_tb_left_text_bold, false)) {
+            mTxtLeft.setTypeface(null, Typeface.BOLD);
+        }
         LinearLayout.LayoutParams tvLeftParams = (LinearLayout.LayoutParams) mTxtLeft.getLayoutParams();
         tvLeftParams.leftMargin = (int) typedArray.getDimension(R.styleable.TitleBar_tb_left_text_margin_left,
                                                                 0);
