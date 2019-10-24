@@ -135,6 +135,14 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mImgLeft.setVisibility(typedArray.getBoolean(R.styleable.TitleBar_tb_left_image_visible,
                                                      false) ? View.VISIBLE : View.GONE);
 
+        int leftImageMarginLeft = (int) typedArray.getDimension(R.styleable.TitleBar_tb_left_image_margin_left,
+                                                                0);
+        if (leftImageMarginLeft != 0) {
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mImgLeft.getLayoutParams();
+            params.leftMargin = leftImageMarginLeft;
+            mImgLeft.setLayoutParams(params);
+        }
+
         int leftMargin = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_left_margin, 0);
         if (leftMargin != 0) {
             FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mVgLeft.getLayoutParams();
