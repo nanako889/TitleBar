@@ -238,6 +238,14 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         mVgLeft.setVisibility(b ? View.VISIBLE : View.GONE);
     }
 
+    public void setRightText(int resText) {
+        mTxtRight.setText(resText);
+    }
+
+    public void setRightText(String text) {
+        mTxtRight.setText(text);
+    }
+
     public void setRightTextColor(int color) {
         mTxtRight.setTextColor(color);
     }
@@ -260,6 +268,14 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
 
     public void setSubTitleVisible(boolean b) {
         mVgSubTitleLayout.setVisibility(b ? VISIBLE : GONE);
+    }
+
+    public void setLeftText(int resText) {
+        mTxtLeft.setText(resText);
+    }
+
+    public void setLeftText(String text) {
+        mTxtLeft.setText(text);
     }
 
     public boolean adjustStatusHeight() {
