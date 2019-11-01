@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TitleBar extends FrameLayout implements View.OnClickListener {
+
+    private final String TAG = getClass().getName();
+    private Map<Integer, Long> mViewClicked = new HashMap<>();
 
     private Listener mListener;
 
@@ -37,6 +44,8 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
     private ImageView mImgRight;
 
     private View mVBottomLine;
+
+    private int mFastClickDuration = 500;
 
     public TitleBar(Context context) {
         super(context);
@@ -208,7 +217,15 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
         if (mListener == null) {
             return;
         }
-        long vid = v.getId();
+        int vid = v.getId();
+        if (mViewClicked.containsKey(vid)) {
+            long lastClickTime = mViewClicked.get(vid);
+            if (System.currentTimeMillis() - lastClickTime <= mFastClickDuration) {
+                Log.w(TAG, "you click so fast!");
+                return;
+            }
+        }
+        mViewClicked.put(vid, System.currentTimeMillis());
         if (vid == R.id.layout_left || vid == R.id.txt_left || vid == R.id.img_left) {
             mListener.onLeftAreaClick();
         } else if (vid == R.id.layout_right || vid == R.id.txt_right || vid == R.id.img_right) {
@@ -302,5 +319,9 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
             e.printStackTrace();
         }
         return statusHeight;
+    }
+
+    public void setFastClickDuration(int fastClickDuration) {
+        mFastClickDuration = fastClickDuration;
     }
 }
