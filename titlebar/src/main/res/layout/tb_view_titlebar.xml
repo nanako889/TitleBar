@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
 
     <View
         android:id="@+id/view_status"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/tb_status_height"
-        tools:background="#aabb00" />
+        android:layout_height="24dp"
+        tools:background="#aabb00"
+        />
 
     <FrameLayout
         android:id="@+id/layout_title"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/tb_title_height">
+        android:layout_height="@dimen/tb_title_height"
+        >
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/vg_title_box"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
-            android:paddingLeft="48dp"
-            android:paddingRight="48dp">
+            >
 
             <LinearLayout
                 android:id="@+id/layout_main_title"
@@ -31,7 +34,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
-                tools:background="#aaddcc">
+                tools:background="#aaddcc"
+                >
 
                 <TextView
                     android:id="@+id/txt_title"
@@ -41,14 +45,16 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:textSize="18sp"
-                    tools:text="aaaabbbbaaaa" />
+                    tools:text="222bbbbbbcccddddd"
+                    />
 
                 <TextView
                     android:layout_width="10dp"
                     android:layout_height="10dp"
                     android:background="@drawable/red_circle_bg"
                     android:visibility="gone"
-                    tools:visibility="visible" />
+                    tools:visibility="visible"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -58,7 +64,8 @@
                 android:gravity="center"
                 android:visibility="gone"
                 tools:visibility="visible"
-                tools:background="#ddcc">
+                tools:background="#ddcc"
+                >
 
                 <TextView
                     android:id="@+id/tv_sub_title"
@@ -67,8 +74,9 @@
                     android:ellipsize="end"
                     android:gravity="center"
                     android:maxLines="1"
-                    tools:text="bbbbbbbb"
-                    tools:textSize="11dp" />
+                    tools:text="11111111111bbbbbbbbccccccccccccccccccddd"
+                    tools:textSize="11sp"
+                    />
 
             </LinearLayout>
         </LinearLayout>
@@ -78,15 +86,19 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:gravity="center"
             android:minWidth="@dimen/tb_title_height"
-            tools:background="#aabbcc">
+            tools:visibility="visible"
+            tools:background="#aabbcc"
+            >
 
             <ImageView
                 android:id="@+id/img_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/tb_white_circle_selector" />
+                android:background="@drawable/tb_white_circle_selector"
+                />
 
             <TextView
                 android:id="@+id/txt_left"
@@ -96,23 +108,30 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textSize="15sp"
-                tools:text="aaaaaa" />
+                tools:text="aaa"
+                />
         </LinearLayout>
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/layout_right"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
+            android:gravity="center"
             android:minWidth="@dimen/tb_title_height"
-            tools:background="#aabbcc">
+            tools:visibility="visible"
+            tools:background="#bb00cc"
+            >
 
             <ImageView
                 android:id="@+id/img_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/tb_white_circle_selector" />
+                tools:src="@android:drawable/ic_delete"
+                android:background="@drawable/tb_white_circle_selector"
+                tools:visibility="visible"
+                />
 
             <TextView
                 android:id="@+id/txt_right"
@@ -120,17 +139,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:ellipsize="end"
+                android:gravity="center"
                 android:maxLines="1"
                 android:textSize="15sp"
-                tools:text="b57" />
-        </FrameLayout>
+                tools:text="b50"
+                />
+        </LinearLayout>
 
     </FrameLayout>
 
     <View
         android:id="@+id/v_bottom_line"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="1px"
         android:visibility="gone"
         tools:visibility="visible"
         tools:background="#aa0000"

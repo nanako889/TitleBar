@@ -1,14 +1,5 @@
 # TitleBar
-TitleBar
+    A simple library
 
-# Gradle
-
-allprojects {
-    repositories {
-        maven { url "https://jitpack.io" }
-    }
-}
-
-dependencies {
-    implementation 'com.github.qbaowei:TitleBar:v1.5'
-}
+# Download
+    implementation 'top.qinbaowei:titlebar:4.0'
